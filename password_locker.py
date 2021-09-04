@@ -34,3 +34,11 @@ class Credentials:
     create credentials class that generates new instance of credentials saved
     """
     credentials_list = []
+
+    def __init__(self, account, username, password):
+        """
+        method for class credential properties
+        """
+        self.account = account
+        self.username = username
+        self.password = password

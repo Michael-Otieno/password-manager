@@ -40,6 +40,14 @@ class TestCredentials(unittest.TestCase):
         """
         self.new_credential = Credentials("email", 'Michael', 'otienO2')
 
+    def test_init(self):
+        """
+        test_init test case to test if the object is initialized properly
+        """
+        self.assertEqual(self.new_credential.account, "email")
+        self.assertEqual(self.new_credential.username, "Michael")
+        self.assertEqual(self.new_credential.password, "otienO2")
+
 
 
     
