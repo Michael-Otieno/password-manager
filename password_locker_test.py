@@ -23,7 +23,7 @@ class TestUser(unittest.TestCase):
 
     def test_save_user(self):
         """
-        test_save_user test to test if the contact object is saved into contact list
+        test_save_user test to test if the user object is saved into contact list
         """
         self.new_user.save_user()
         self.assertEqual(len(User.user_list), 1)
@@ -47,6 +47,29 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.account, "email")
         self.assertEqual(self.new_credential.username, "Michael")
         self.assertEqual(self.new_credential.password, "otienO2")
+
+    def test_save_credential(self):
+        """
+        test_save_credential test to test if the credential object is saved into credential_list
+        """
+        self.new_credential.save_credential()
+        self.assertEqual(len(Credentials.credentials_list), 1)
+
+
+    def test_save_multiple_credential(self):
+        """
+        test_save_multiple_contact to check if we can save multple contact objects to our credential_list
+        """
+        self.new_credential.save_credential()
+        test_credential = Credentials("email", "Michael", "otieno2")
+        test_credential.save_credential()
+        self.assertEqual(len(Credentials.credentials_list), 2)
+
+    def tearDown(self):
+        """
+        method that does clean up after each test
+        """
+        Credentials.credentials_list = []
 
 
 
