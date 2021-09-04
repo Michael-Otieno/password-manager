@@ -105,6 +105,13 @@ class TestCredentials(unittest.TestCase):
         found_credential = Credentials.if_credential_exist('email')
         self.assertTrue(found_credential)
 
+    def test_display_saved_credential(self):
+        """
+        test to display contacts saved
+        """
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+
+
 
     
 if __name__ == '__main__':
