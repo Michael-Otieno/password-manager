@@ -1,4 +1,8 @@
 
+import random
+import string
+import pyperclip
+
 class User:
     """
     create a user class that generates new instances of a user.
@@ -45,7 +49,7 @@ class Credentials:
             if(user.username == username and user.password == password):
                 _user == user.username
         return _user
-        
+
 
     def __init__(self, account, username, password):
         """
@@ -96,6 +100,21 @@ class Credentials:
         method that returns the credential list
         """
         return cls.credentials_list
+
+    @classmethod
+    def copy_password(cls, account):
+        """
+        metthod to copy password using pyperclip
+        """
+        find_credential = Credentials.find_credential(account)
+        pyperclip.copy(find_credential.password)
+
+    def generate_password(stringLength=6):
+        """
+        Generate a random password
+        """
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits
+        return "".join(random.choice(password) for i in range(stringLength))
 
 
     

@@ -34,7 +34,7 @@ def delete_user(user):   #
     function to delete user
     """
     user.delete_user()
-    
+
 
 def create_new_credential(account, username, password):
     """
@@ -59,6 +59,34 @@ def delete_credential(credentials):
     function to delete credentials from credential list
     """
     credentials.delete_credentials()
+
+def find_credential(account):
+    """
+    function to check for credentials using account name and returns the account credentials
+    """
+    return Credentials.find_credential(account)
+
+def check_credentials(account):
+    """
+    function to check if a credential account exist 
+    """
+    return Credentials.if_credential_exist(account)
+
+
+def copy_password(account):
+    """
+    function that copies password using pyperclip
+    """
+    return Credentials.copy_password(account)
+
+def generate_password(account):
+    """
+    function that generates random password
+    """
+    _password = Credentials.generate_password()
+    return _password
+
+
 
 
 
