@@ -1,5 +1,6 @@
 import unittest
 from password_locker import User
+from password_locker import Credentials
 
 class TestUser(unittest.TestCase):
     """
@@ -26,6 +27,19 @@ class TestUser(unittest.TestCase):
         """
         self.new_user.save_user()
         self.assertEqual(len(User.user_list), 1)
+
+
+
+class TestCredentials(unittest.TestCase):
+    """
+    Test class to define credentials class
+    """
+    def setUp(self):
+        """
+         Set up method to run before each test case for credential class
+        """
+        self.new_credential = Credentials("email", 'Michael', 'otienO2')
+
 
 
     

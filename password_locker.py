@@ -17,3 +17,10 @@ class User:
         save_user method saves user objects into user_list
         """
         User.user_list.append(self)
+
+
+class Credentials:
+    """
+    create credentials class that generates new instance of credentials saved
+    """
+    credentials_list = []
