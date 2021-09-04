@@ -35,6 +35,18 @@ class Credentials:
     """
     credentials_list = []
 
+    @classmethod
+    def verify_user(cls, username, password):
+        """
+        method to verify if user is in the system already
+        """
+        _user = ""
+        for user in User.user_list:
+            if(user.username == username and user.password == password):
+                _user == user.username
+        return _user
+        
+
     def __init__(self, account, username, password):
         """
         method for class credential properties
