@@ -56,6 +56,13 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(len(Credentials.credentials_list), 1)
 
 
+    def tearDown(self):   #
+        """
+        method that does clean up after each test
+        """
+        Credentials.credentials_list = []
+
+
     def test_save_multiple_credential(self):
         """
         test_save_multiple_contact to check if we can save multple contact objects to our credential_list
@@ -65,12 +72,18 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credential()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
-    def tearDown(self):
+    def test_delete_credential(self):
         """
-        method that does clean up after each test
+        test_delete_credential to test if we can remove a credential from our credential list
         """
-        Credentials.credentials_list = []
+        self.new_credential.save_credential()
+        test_credential = Credentials("email", "Michael", "otieno2")
+        test_credential.save_credential()
 
+        self.new_credential.delete_credential() #deleting a contact object
+        self.assertEqual(len(Credentials.credentials_list), 1)
+
+  
 
 
     
