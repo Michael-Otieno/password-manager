@@ -146,7 +146,7 @@ def main():
                 print(f"Username: {find_credential.username}")
                 print(f"Password: {find_credential.password}")
 
-        elif short_code == 'E':
+        elif short_code == 'e':
             print("\n")
             print("Thank you for using password generator")
             break
