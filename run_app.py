@@ -3,6 +3,15 @@ from password_locker import User
 from password_locker import Credentials
 
 
+def function():
+	print("               ____                                                                 ")
+	print("              |  _ \                                                           __   ")
+	print("              | |_) )  ____  ___   ___  __    ___      __  ______   __        |  | ")
+	print("              |  __/  / _  |/ __  / __  \ \__/ /\ \__ / / |  _   | | _ \    __|  |    ")
+	print("              | |    / (_| |\__ \ \__ \  \    /  \     /  | |_|  | ||_| |  |     |   ")
+	print("              |_|    \_____| ___/  ___/   \__/    \___/   |______| ||  \ \ |_____|  ")
+
+function()
 
 def create_new_user(username,email, password):
     """
@@ -164,3 +173,6 @@ def main():
     
 if __name__ == "__main__":
     main()
+
+                    
+   
