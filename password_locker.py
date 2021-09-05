@@ -110,3 +110,5 @@ class Credentials:
         password = ''.join(random.choice(chars) for _ in range(10))
 
         return password
+
+   

@@ -1,6 +1,7 @@
 import unittest
 from password_locker import User
 from password_locker import Credentials
+import pyperclip
 
 class TestUser(unittest.TestCase):
     """
@@ -82,7 +83,7 @@ class TestCredentials(unittest.TestCase):
         test_credential = Credentials("email", "Michael", "otieno2")
         test_credential.save_credential()
 
-        self.new_credential.delete_credential() #deleting a contact object
+        self.new_credential.delete_credential()
         self.assertEqual(len(Credentials.credentials_list), 1)
 
     def test_find_credential_by_account(self):
@@ -119,6 +120,7 @@ class TestCredentials(unittest.TestCase):
         test_generate_password_not_empty to check if the password is generated
         '''
         self.assertEqual(len(Credentials.generate_password()),10)
+        
 
     
 if __name__ == '__main__':

@@ -2,6 +2,8 @@
 from password_locker import User
 from password_locker import Credentials
 
+
+
 def create_new_user(username,email, password):
     """
         function to create_new_user
@@ -27,7 +29,7 @@ def delete_user(user):   #
     """
     User.delete_user(user)
 
-def save_credential(credential):#check
+def save_credential(credential):
     """
     function to save new credentials to the credential_list
     """
@@ -39,7 +41,7 @@ def display_credential():
     """
     return Credentials.display_credentials()
 
-def delete_credential(credentials):#check
+def delete_credential(credentials):
     """
     function to delete credentials from credential list
     """
@@ -66,12 +68,15 @@ def generate_a_password():
    
 
 def main():
-    print("Hi, Welcome to Password Manager...\n\n Please enter the following to proceed.\n\n CN -- Create a new account \n LI --Log in \n")
+    print('\n')
+    print("Hi, Welcome to Password Manager")
+    print("-"*30)
+    print("\n\n Please enter the following to proceed.\n\n CN -- Create a new account \n LI --Log in \n")
     short_code = input().lower()
     if short_code == 'cn':
+        print('\n')
         username = input("Enter username: ")
         email = input("Enter email: ")
-        # password = input("Enter password:")
         while True:
             print('Would you like a generated password?\nPlease choose an option (y/n)')
             response = input().lower()
