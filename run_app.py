@@ -8,57 +8,43 @@ def create_new_user(username,email, password):
         function to create_new_user
     """
     new_user = User(username,email, password)
-    new_user.save_user() #to check
+    return new_user
 
 def save_user(user):
     """
     Function to save user
     """
-    user.save_user()
+    User.save_user(user)
 
-def display_user(user):
+def display_user():
     """
     function to display existing users
     """
     return User.display_user()
 
-def login_user(username, password):
-    """
-    function that checks if a user exist and then logs user in
-    """
-    check_user = Credentials.verify_user(username, password)
-    return check_user
-
 def delete_user(user):   #
     """
     function to delete user
     """
-    user.delete_user()
+    User.delete_user(user)
 
-
-def create_new_credential(account, username, password):
-    """
-    function to create new credential for a given user
-    """
-    new_credential = Credentials(account, username, password)
-
-def save_credentials(credentials):
+def save_credential(credential):#check
     """
     function to save new credentials to the credential_list
     """
-    credentials.save_credential()
+    Credentials.save_credential(credential)
 
-def display_account_info():
+def display_credential():
     """
     function that returns all saved accounts
     """
     return Credentials.display_credentials()
 
-def delete_credential(credentials):
+def delete_credential(credentials):#check
     """
     function to delete credentials from credential list
     """
-    credentials.delete_credentials()
+    Credentials.delete_credential(credentials)
 
 def find_credential(account):
     """
@@ -73,18 +59,137 @@ def check_credentials(account):
     return Credentials.if_credential_exist(account)
 
 
-def copy_password(account):
-    """
-    function that copies password using pyperclip
-    """
-    return Credentials.copy_password(account)
+def generate_a_password():
+    '''
+    Function to generate a password for the user account
+    '''
+    return Credentials.generate_password()
+   
 
-def generate_password(account):
-    """
-    function that generates random password
-    """
-    _password = Credentials.generate_password()
-    return _password
+def main():
+    print("Hi, Welcome to Password Manager...\n\n Please enter the following to proceed.\n\n CN -- Create a new account \n LI --Log in \n")
+    short_code = input().lower()
+    if short_code == 'cn':
+        username = input("Enter username: ")
+        email = input("Enter email: ")
+        # password = input("Enter password:")
+        while True:
+            print('Would you like a generated password?\nPlease choose an option (y/n)')
+            response = input().lower()
+            if response == 'y':
+                password = generate_a_password()
+                print(f"Your Password is {password}")
+                break
+            elif response == 'n':
+                print('Enter Password: ')
+                password = input()
+                break
+            else:
+                print("Invalid choice. Please try again")
+
+        save_user(create_new_user(username, email, password))
+        print(f"Hi {username}, Welcome to Password Manager. Your email is {email} and Password is {password}")
+
+    elif short_code == "li":
+         username = input("Enter username: ")
+         password = input("Enter password:")
+         print("Logged in successfully")
+
+    else:
+        print('Invalid choice. Please Try again')
+
+    while True:
+        print("Use the words : ADD - add a new account, DI - display all accounts, find - find an account, exit - exit the program")
+        short_code = input().lower()
+        if short_code == "add":
+            print("Add account")
+            print("-"*10)
+            account = input("Enter application name: ")
+            username = input("Enter user name: ")
+
+            while True:
+                print(f"Would you like us to generate a password for your {account} account?(y/n)")
+                second_response = input().lower()
+                if second_response == 'y':
+                    password = generate_a_password()
+
+                    print(f"Your password is {password}")
+                    break
+                elif second_response == "n":
+                    print("\n")
+                    password = input("Enter a password: ")
+                    break
+                else:
+                    print("\n")
+                    print("Invalid input. Please try again.")
+
+            save_credential(create_new_user(account,username,password))
+            print(f"Your is {username} for {account} and Password is {password}")
+
+        elif short_code == "di":
+            if display_credential():
+                print("Here is a list of all your credentials")
+                print("\n")
+                for credential in display_credential():
+                    print(f"{credential.account}\n{credential.username}\n{credential.password}")
+                    print('\n')
+
+            else:
+                print("You don't seem to have an account use AD to add account")
+
+
+
+
+
+
+
+
+    
+        
+    
+
+
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def copy_password(account):
+#     """
+#     function that copies password using pyperclip
+#     """
+#     return Credentials.copy_password(account)
+
+# def generate_password(account):
+#     """
+#     function that generates random password
+#     """
+#     _password = Credentials.generate_password()
+#     return _password
 
 
 
