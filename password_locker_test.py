@@ -12,14 +12,16 @@ class TestUser(unittest.TestCase):
         Set up method to run before each test cases
 
         """
-        self.new_user = User("Michael", "otienO2")
+        self.new_user = User("Michael", "one@email.com", "otienO2")
 
     def test_init(self):
         """
         test_init test case to test if the object is initialized properly
         """
         self.assertEqual(self.new_user.username, "Michael")
+        self.assertEqual(self.new_user.email, "one@email.com")
         self.assertEqual(self.new_user.password, "otienO2")
+
 
     def test_save_user(self):
         """
@@ -112,6 +114,11 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
 
 
+    def test_generate_password_not_empty(self):
+        '''
+        test_generate_password_not_empty to check if the password is generated
+        '''
+        self.assertEqual(len(Credentials.generate_password()),10)
 
     
 if __name__ == '__main__':

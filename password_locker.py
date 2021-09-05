@@ -1,6 +1,5 @@
 
 import random
-import string
 import pyperclip
 
 class User:
@@ -9,12 +8,14 @@ class User:
     """
     user_list = []
 
-    def __init__(self, username, password):
+    def __init__(self, username, email, password):#added email
         """
         method for class user properties
         """
         self.username = username
+        self.email = email
         self.password = password
+        
 
     def save_user(self):
         """
@@ -39,21 +40,14 @@ class Credentials:
     """
     credentials_list = []
 
-    @classmethod
-    def verify_user(cls, username, password):
-        """
-        method to verify if user is in the system already
-        """
-        _user = ""
-        for user in User.user_list:
-            if(user.username == username and user.password == password):
-                _user == user.username
-        return _user
-
 
     def __init__(self, account, username, password):
         """
         method for class credential properties
+         Args:
+            account: New user account/ exixting account
+            usernname: New account login
+            password: New account password
         """
         self.account = account
         self.username = username
@@ -71,10 +65,15 @@ class Credentials:
         """
         Credentials.credentials_list.remove(self)
 
+    
     @classmethod
     def find_credential(cls, account):
         """
         method that takes in account name and returns contacts that matches the account
+            Args:
+            account: name of the account to search for
+        Returns:
+            Details of accounts with the account name
         """
         for credential in cls.credentials_list:
             if credential.account == account:
@@ -102,19 +101,12 @@ class Credentials:
         return cls.credentials_list
 
     @classmethod
-    def copy_password(cls, account):
-        """
-        metthod to copy password using pyperclip
-        """
-        find_credential = Credentials.find_credential(account)
-        pyperclip.copy(find_credential.password)
+    def generate_password(cls):
+        '''
+        generate_password method generates a password for the new account
+        '''
+        chars = 'abcdefghijklmnopqrstuvwxyz1234567890'
 
-    def generate_password(stringLength=6):
-        """
-        Generate a random password
-        """
-        password = string.ascii_uppercase + string.ascii_lowercase + string.digits
-        return "".join(random.choice(password) for i in range(stringLength))
+        password = ''.join(random.choice(chars) for _ in range(10))
 
-
-    
+        return password
